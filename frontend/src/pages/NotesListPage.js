@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import ListItem from "../components/ListItem";
 const NotesListPage = () => {
   let [notes, setNotes] = useState([]);
-
-  let person = {
-    name: "yike",
-    age: 12,
-  };
 
   useEffect(() => {
     getNotes();
@@ -21,13 +17,22 @@ const NotesListPage = () => {
   };
 
   return (
-    <div>
-      <div className="bg-gray-600 px-4 container">
-        <div className="">
-          {notes.map((note, index) => (
-            <ListItem key={index} note={note} />
-          ))}
+    <div className="bg-zinc-500   h-screen mb-5 rounded-b w-auto pt-4">
+      <div className=" px-2 container max-h-screen ">
+        <div className="flex flex-row justify-between mb-2 py-1 text-red-500  font-bold text-xl">
+          <p>
+            <Link to={"/"}>
+              <span>&#9782;</span>
+            </Link>
+
+            <span className="ml-2">Notes</span>
+          </p>
+
+          <p className="mr-2 text-lg font-normal text-black">{notes.length}</p>
         </div>
+        {notes.map((note, index) => (
+          <ListItem key={index} note={note} />
+        ))}
       </div>
     </div>
   );
